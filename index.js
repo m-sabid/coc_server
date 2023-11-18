@@ -20,10 +20,12 @@ app.get("/", function (req, res) {
 });
 
 app.get("/api/clan/:tag", async (req, res) => {
+  const clanTag = "#LJ82YGP9";
+
   try {
     const response = await axios.get(
       `https://api.clashofclans.com/v1/clans/${encodeURIComponent(
-        req.params.tag
+        clanTag
       )}`,
       {
         headers: {
@@ -37,9 +39,7 @@ app.get("/api/clan/:tag", async (req, res) => {
     console.log(response, "response");
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal Server Error", error);
-    res.json(error);
-    console.log(error)
+    res.status(500).send("Internal Server Error");
   }
 });
 
