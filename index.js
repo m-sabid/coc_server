@@ -40,6 +40,7 @@ app.get("/api/clan/:tag", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
+    res.send(error.massage)
   }
 });
 
